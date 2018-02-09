@@ -1,6 +1,24 @@
 {% extends 'todoapp/base.html' %}
 
 {% block content %}
-<h1>Login</h1>
+  {% if error %}
+    <div class="alert alert-warning">
+      <strong>Error!</strong> {{error}}
+    </div>
+  {% endif %}
+  <h1>Login</h1>
+
+   <form method="POST" action="/login">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" name="username" class="form-control" placeholder="Display name">
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="password" class="form-control" placeholder="Secret password">
+      </div>
+      <input type="submit" value="Login" class="btn btn-primary">
+    </form>
 
 {% endblock %}
